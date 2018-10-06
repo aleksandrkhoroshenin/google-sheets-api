@@ -11,6 +11,8 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.sheets.v4.Sheets;
+import com.google.api.services.sheets.v4.model.CopySheetToAnotherSpreadsheetRequest;
+import com.google.api.services.sheets.v4.model.Spreadsheet;
 import com.google.api.services.sheets.v4.model.ValueRange;
 import com.voxme.googlesheetsapi.service.GoogleApiGateway;
 import org.springframework.stereotype.Service;
@@ -34,6 +36,13 @@ public class GoogleApiGatewayImpl implements GoogleApiGateway {
         Sheets service = new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
                 .setApplicationName(APPLICATION_NAME)
                 .build();
+//        Sheets.Spreadsheets.Create sheet = service.spreadsheets().create(new Spreadsheet());
+//        service.spreadsheets().sheets().copyTo("1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms",
+//                ,
+//                new CopySheetToAnotherSpreadsheetRequest())
+
+
+
         ValueRange response = service.spreadsheets().values()
                 .get(spreadsheetId, range)
                 .execute();
